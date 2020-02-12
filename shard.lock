@@ -1,0 +1,18 @@
+version: 1.0
+shards:
+  ameba:
+    github: veelenga/ameba
+    version: 0.11.0
+
+  baked_file_system:
+    github: schovi/baked_file_system
+    commit: 4fb8df749165cfda8d9480175700b3f54d33872f
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.9
+
+  router:
+    github: tbrand/router.cr
+    version: 0.2.7
+
