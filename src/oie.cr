@@ -67,7 +67,6 @@ class WebServer
   end
 
   def run
-    # Generate virtual filesystem routes from "public" folder
     Filesystem.files.each do |file|
       get file.path do |context, _params|
         Filesystem.serve(file, context)
