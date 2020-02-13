@@ -43,7 +43,7 @@ var dices = {
 }
 $(document).ready(function () {
     // Init
-    $("#rules-desc").text(rules[0])
+    $("#rules-desc").html(rules[0])
 
     // Dice
     $("#dice-button").on("click", () => {
