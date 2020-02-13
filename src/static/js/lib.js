@@ -6,31 +6,40 @@ var rules = {
     3: "Hi hi hi hi !!!",
     4: "Qu'est ce que tu croyais ?",
     5: "Avance de 2 cases",
-    6: "Rejoue",
+    6: "<h3><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-dice\"></i></span> Relance le dés</h3>",
     7: "Passe ton tour ;-)))))",
     8: "Retourne à la case départ",
     9: "Qu'est ce que t'as cru !",
     10: "Avance de 2 cases",
     11: "Salut la famille !",
-    12: "Rejoue",
+    12: "<h3><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-dice\"></i></span> Relance le dés</h3>",
     13: "Avance de 3 cases",
-    14: "Va à la case <span class=\"badge badge-dark\">19</span>",
+    14: "Va à la case <span class=\"badge badge-pill badge-dark\">19</span>",
     15: "Passe ton tour ;-)))))",
     16: "Rien du tout",
     17: "Ok",
-    18: "Rejoue",
+    18: "<h3><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-dice\"></i></span> Relance le dés</h3>",
     19: "C'est ouf, il n'y a rien !",
     20: "Avance de 2 cases",
     21: "Rien du tout",
     22: "Tu as eu chaud !",
     23: "Recule de 2 cases",
-    24: "Rejoue",
-    25: "Go à la case <span class=\"badge badge-dark\">21</span>",
+    24: "<h3><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-dice\"></i></span> Relance le dés</h3>",
+    25: "Go à la case <span class=\"badge badge-pill badge-dark\">21</span>",
     26: "Regarde le ciel",
     27: "Il fait beau ici",
     28: "Il n'y a rien ici !",
     29: "Tu y es presque ;))",
     30: "Arrivée !",
+}
+
+var dices = {
+    1: "dice-one",
+    2: "dice-two",
+    3: "dice-three",
+    4: "dice-four",
+    5: "dice-five",
+    6: "dice-six",
 }
 $(document).ready(function () {
     // Init
@@ -38,8 +47,12 @@ $(document).ready(function () {
 
     // Dice
     $("#dice-button").on("click", () => {
-        let val = Math.round(Math.random() * 5) + 1
-        return $("#dice").text(val)
+        // Update the dice value
+        let diceVal = Math.round(Math.random() * 5) + 1
+        $("#dice").html("<i class=\"fas fa-" + dices[diceVal].toString() + "\"></i>")
+        // Update the number dice was hit
+        let counter = parseInt($("#counter-hit").text(), 10) + 1
+        $("#counter-hit").text(counter.toString())
     })
 
     // Rules
