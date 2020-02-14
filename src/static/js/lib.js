@@ -41,6 +41,15 @@ var dices = {
     5: "dice-five",
     6: "dice-six",
 }
+
+var dicesBackground = {
+    1: "danger",
+    2: "secondary",
+    3: "primary",
+    4: "info",
+    5: "dark",
+    6: "success"
+}
 $(document).ready(function () {
     // Init
     $("#rules-desc").html(rules[0])
@@ -53,6 +62,8 @@ $(document).ready(function () {
         // Update the number dice was hit
         let counter = parseInt($("#counter-hit").text(), 10) + 1
         $("#counter-hit").text(counter.toString())
+        // Update dice background color
+        $("#dice-button").prev().removeClass().addClass("card text-white bg-" + dicesBackground[diceVal].toString() + " mb-2")
     })
 
     // Rules
