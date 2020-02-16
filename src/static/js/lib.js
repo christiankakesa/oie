@@ -1,3 +1,4 @@
+const BOARD_LENGTH = 30
 
 var rules = {
     0: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-map-marker-alt\"></i></span> Départ !</h4>",
@@ -50,47 +51,53 @@ var dicesBackground = {
     5: "dark",
     6: "success"
 }
+
+var updateGames = (step = 1) => {
+    let integer = parseInt($("#step").val(), 10)
+    // check current value
+    if (isNaN(integer) || integer < 0 || (integer + step) < 0) {
+        integer = 0
+    } else if (integer > BOARD_LENGTH) {
+        integer = BOARD_LENGTH
+    } else if ((integer + step) > BOARD_LENGTH) {
+        integer = BOARD_LENGTH - (integer + step - BOARD_LENGTH)
+    } else {
+        integer = integer + step
+    }
+
+    $("#step").val(integer.toString())
+    $("#rules-desc").html(rules[integer])
+
+}
+
 $(document).ready(function () {
     // Init
     $("#rules-desc").html(rules[0])
 
     // Dice
-    $("#dice-button").on("click", () => {
+    $("#dice-button").on("click", (event) => {
+        event.preventDefault()
         // Update the dice value
         let diceVal = Math.round(Math.random() * 5) + 1
         $("#dice").html("<i class=\"fas fa-" + dices[diceVal].toString() + "\"></i>")
         // Update dice background color
-        $("#dice").animate({ opacity: 0.25 }, "slow")
-        $("#dice-button").prev().removeClass().addClass("card text-white bg-" + dicesBackground[diceVal].toString() + " mb-2")
-        $("#dice").animate({ opacity: 1 }, "fast")
+        $("#dice").animate({ opacity: 0.4 }, 500,
+            () => {
+                $("#dice").css("opacity", 1)
+                updateGames(diceVal)
+            })
+        $("#dice-button").prev().removeClass().addClass("card text-white mb-1 bg-" + dicesBackground[diceVal].toString())
     })
 
     // Rules
-    $("#rules-plus").on("click", () => {
-        let integer = parseInt($("#step").val(), 10);
-        if (isNaN(integer)) {
-            integer = 0
-        } else if (integer >= 30 || integer < 0) {
-            integer = 0
-        } else {
-            integer = integer + 1
-        }
-        $("#step").val(integer.toString())
-        $("#rules-desc").html(rules[integer])
+    $("#rules-plus").on("click", (event) => {
+        event.preventDefault()
+        updateGames(1)
     })
 
-    $("#rules-minus").on("click", () => {
-        let integer = parseInt($("#step").val(), 10);
-        if (isNaN(integer)) {
-            integer = 0
-        } else if (integer <= 0 || integer > 30) {
-            integer = 30;
-        } else {
-            integer = integer - 1
-        }
-
-        $("#step").val(integer.toString())
-        $("#rules-desc").html(rules[integer])
+    $("#rules-minus").on("click", (event) => {
+        event.preventDefault()
+        updateGames(-1)
     })
 
     // Step
@@ -98,16 +105,8 @@ $(document).ready(function () {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == "13") {
             event.preventDefault()
-            let integer = parseInt($("#step").val(), 10)
-            if (isNaN(integer)) {
-                integer = 0
-            } else if (integer < 0) {
-                integer = 0
-            } else if (integer > 30) {
-                integer = 30
-            }
-            $("#step").val(integer.toString())
-            $("#rules-desc").html(rules[integer])
+            updateGames(0)
         }
     });
 });
+
