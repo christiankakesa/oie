@@ -42,7 +42,6 @@ class Filesystem
     resp = context.response
     resp.status_code = 200
     resp.content_type = MIME.from_filename(file.path)
-    resp.set_encoding("UTF-8")
     if req.headers["Accept-Encoding"]? =~ /gzip/
       resp.headers["Content-Encoding"] = "gzip"
       resp.content_length = file.compressed_size
