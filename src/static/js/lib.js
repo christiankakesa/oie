@@ -1,7 +1,7 @@
 
 var rules = {
     0: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-map-marker-alt\"></i></span> Départ !</h4>",
-    1: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as du chien</h4>",
+    1: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as de la chance</h4>",
     2: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as fait mouche</h4>",
     3: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-fighter-jet\"></i></span> Avance de 2 cases</h4>",
     4: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as oublié ta tête sous l’oreiller</h4>",
@@ -59,11 +59,10 @@ $(document).ready(function () {
         // Update the dice value
         let diceVal = Math.round(Math.random() * 5) + 1
         $("#dice").html("<i class=\"fas fa-" + dices[diceVal].toString() + "\"></i>")
-        // Update the number dice was hit
-        let counter = parseInt($("#counter-hit").text(), 10) + 1
-        $("#counter-hit").text(counter.toString())
         // Update dice background color
+        $("#dice").animate({ opacity: 0.25 }, "slow")
         $("#dice-button").prev().removeClass().addClass("card text-white bg-" + dicesBackground[diceVal].toString() + " mb-2")
+        $("#dice").animate({ opacity: 1 }, "fast")
     })
 
     // Rules
