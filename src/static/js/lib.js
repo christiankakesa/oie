@@ -5,7 +5,7 @@ var rules = {
     2: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as fait mouche</h4>",
     3: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-fighter-jet\"></i></span> Avance de 2 cases</h4>",
     4: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu as oublié ta tête sous l’oreiller</h4>",
-    5: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Dépose le bilan</h4>",
+    5: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-smile-beam\"></i></span> Tu peux le faire</h4>",
     6: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-dice\"></i></span> Relance le dés</h4>",
     7: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-hand-paper\"></i></span> Passe ton tour</h4>",
     8: "<h4><span class=\"badge badge-pill badge-dark\"><i class=\"fas fa-undo\"></i></span> Retourne à la case départ</h4>",
