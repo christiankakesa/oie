@@ -1,6 +1,8 @@
 # Jeu de l'Oie
 
-Playing with kids this __Goose game__, implemented in HTML5/JavaScript and propulsed with [Crystal](https://crystal-lang.org/) programming language.
+This _goose game_ is for playing with my kids.
+
+__Oie__ is implemented in HTML5/JavaScript and propulsed with [Crystal](https://crystal-lang.org/) programming language.
 
 ## Requirements
 
