@@ -67,7 +67,6 @@ var updateGames = (step = 1) => {
 
     $("#step").val(integer.toString())
     $("#rules-desc").html(rules[integer])
-
 }
 
 $(document).ready(function () {
