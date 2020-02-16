@@ -87,5 +87,4 @@ class WebServer
   end
 end
 
-
 WebServer.new.run

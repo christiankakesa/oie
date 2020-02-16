@@ -14,5 +14,5 @@ shards:
 
   router:
     github: tbrand/router.cr
-    version: 0.2.7
+    commit: 343bca2292f5518c06e6e97bf1781f85acf2bd87
 
