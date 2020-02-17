@@ -44,9 +44,8 @@ class Filesystem
     resp.content_type = MIME.from_filename(file.path)
     if req.headers["Accept-Encoding"]? =~ /gzip/
       resp.headers["Content-Encoding"] = "gzip"
-      # TODO(fenicks): find a best way to retrieve gziped file data
       resp.content_length = file.compressed_size
-      file.write_to_io(resp, compressed: true)
+      resp.write(file.to_slice)
     else
       resp.content_length = file.size
       resp.print Filesystem.get?(file.path).try(&.gets_to_end)
