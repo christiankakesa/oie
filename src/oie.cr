@@ -48,7 +48,7 @@ class Filesystem
       resp.write(file.to_slice)
     else
       resp.content_length = file.size
-      resp.print Filesystem.get?(file.path).try(&.gets_to_end)
+      resp.print Filesystem.get(file.path).gets_to_end
     end
     context
   end
@@ -59,8 +59,18 @@ class WebServer
 
   def routes
     get "/" do |context, _params|
-      context.response.content_type = "text/html"
-      context.response.print Filesystem.get?("index.html").try(&.gets_to_end)
+      file_path = "index.html"
+      req = context.request
+      resp = context.response
+      resp.content_type = MIME.from_filename(file_path)
+      if req.headers["Accept-Encoding"]? =~ /gzip/
+        resp.headers["Content-Encoding"] = "gzip"
+        resp.content_length = Filesystem.get(file_path).compressed_size
+        resp.write(Filesystem.get(file_path).to_slice)
+      else
+        context.response.content_length = Filesystem.get(file_path).size
+        context.response.print Filesystem.get(file_path).gets_to_end
+      end
       context
     end
   end
