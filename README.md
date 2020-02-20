@@ -10,4 +10,6 @@ You need a 30 squares printed board.
 
 Have fun!
 
+![Screenshot](https://github.com/fenicks/oie/blob/master/src/static/screenshot.png "Oie screenshot")
+
 ![Goose board](https://github.com/fenicks/oie/blob/master/src/static/oie.jpg "Goose board image")
